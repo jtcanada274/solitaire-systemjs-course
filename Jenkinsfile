@@ -44,11 +44,11 @@ node() {
 //parallel integration testing
 stage 'Browser Testing'
 parallel chrome: {
-    //runTests("Chrome")
+    runTests("Chrome")
 }, firefox: {
-   // runTests("Firefox")
+    runTests("Firefox")
 }, safari: {
-   // runTests("Safari")
+    runTests("Safari")
 }
 
 def runTests(browser) {
@@ -59,10 +59,10 @@ def runTests(browser) {
         unstash 'everything'
 
         // on windows use: bat "npm run test-single-run -- --browsers ${browser}"
-        sh "npm run test-single-run -- --browsers ${browser}"
+        //sh "npm run test-single-run -- --browsers ${browser}"
 
-        step([$class: 'JUnitResultArchiver', 
-              testResults: 'test-results/**/test-results.xml'])
+        //step([$class: 'JUnitResultArchiver', 
+        //      testResults: 'test-results/**/test-results.xml'])
     }
 }
 
